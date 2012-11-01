@@ -26,4 +26,4 @@ while(True):
     except:
         print "Something bad happened. Don't care..."
     print cpuUsage
-    time.sleep(1)
+    time.sleep(60)
