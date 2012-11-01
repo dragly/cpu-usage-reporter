@@ -17,13 +17,21 @@ baseUrl = "http://compphys.dragly.org"
 
 username = argv[1]
 
+samples = 1
+usageSum = 0
 while(True):
     cpuUsage = psutil.cpu_percent()
-    try:
-        runData = json.load(urllib2.urlopen(baseUrl + "/wp-content/plugins/cpu-reporter/submit.php?user=" + username + "&usage=" + str(cpuUsage)))
-    except KeyboardInterrupt:
-        raise KeyboardInterrupt
-    except:
-        print "Something bad happened. Don't care..."
-    print cpuUsage
-    time.sleep(60)
+    usageSum += cpuUsage
+    if samples > 11:
+        averageUsage = float(usageSum) / float(samples)
+        print("Pushing usage to server", averageUsage)
+        try:    
+            runData = json.load(urllib2.urlopen(baseUrl + "/wp-content/plugins/cpu-reporter/submit.php?user=" + username + "&usage=" + str(averageUsage)))
+        except KeyboardInterrupt:
+            raise KeyboardInterrupt
+        except:
+            print("Something bad happened. Don't care...")
+        samples = 1
+    print(cpuUsage)
+    time.sleep(5)
+    samples += 1
