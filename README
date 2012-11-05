@@ -1,0 +1,5 @@
+Add the script to startup applications in Ubuntu by opening Dash, search for "Startup", choose Add Script and input something like
+
+    /home/username/cpureporter.py myusername
+
+where myusername is the name you want related to your score in the graphs.
