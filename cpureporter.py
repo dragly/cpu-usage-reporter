@@ -33,6 +33,7 @@ while(True):
         except:
             print("Something bad happened. Don't care...")
         samples = 1
+        usageSum = 0
     print(cpuUsage)
-    time.sleep(5)
+    time.sleep(1)
     samples += 1
