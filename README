@@ -1,3 +1,7 @@
+You need to install the python-psutil package before using this script. On Ubuntu, just do
+
+    sudo apt-get install python-psutil
+
 Add the script to startup applications in Ubuntu by opening Dash, search for "Startup", choose Add Script and input something like
 
     /home/username/cpureporter.py myusername
