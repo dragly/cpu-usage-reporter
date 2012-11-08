@@ -1,0 +1,5 @@
+cpu-usage-reporter (0.0.1) precise; urgency=low
+
+  * Initial release.
+
+ -- Svenn-Arne Dragly <s@dragly.com>  Wed, 07 Nov 2012 23:31:00 +0100
