@@ -19,6 +19,16 @@ from sys import argv
 baseUrl = "http://compphys.dragly.org"
 # END UPDATE VARIABLES
 
+def loadUserNameFromFile():
+    global username
+    configParser = ConfigParser.ConfigParser()
+    configParser.read(configPath)
+    if configParser.has_section("General"):
+        if configParser.has_option("General", "username"):
+            username = configParser.get("General", "username")
+            print("Updating username to", username)
+    
+
 configPath = "/etc/cpu-usage-reporter.conf"
 username = "unnamed" + ("%.0f" % (random.random() * 100))
 
@@ -28,13 +38,9 @@ if len(argv) > 1:
     username = argv[1]
 # If a config file has been set up
 elif os.path.exists(configPath):
-    configParser = ConfigParser.ConfigParser()
-    configParser.read(configPath)
-    if configParser.has_section("General"):
-        if configParser.has_option("General", "username"):
-            username = configParser.get("General", "username")
+    loadUserNameFromFile()
 
-print "Using username " + username
+print("Using username " + username)
 
 samples = 1
 usageSum = 0
@@ -42,9 +48,11 @@ while(True):
     cpuUsage = psutil.cpu_percent()
     usageSum += cpuUsage
     if samples > 11:
+        if os.path.exists(configPath):
+            loadUserNameFromFile()
         averageUsage = float(usageSum) / float(samples)
         print("Pushing usage to server", averageUsage)
-        try:    
+        try:
             runData = json.load(urllib2.urlopen(baseUrl + "/wp-content/plugins/cpu-reporter/submit.php?user=" + username + "&usage=" + str(averageUsage)))
         except KeyboardInterrupt:
             raise KeyboardInterrupt

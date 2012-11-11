@@ -1,3 +1,15 @@
+cpu-usage-reporter (0.0.3) precise; urgency=low
+
+  * Fixed bug if config file does not exist.
+
+ -- Svenn-Arne Dragly <s@dragly.com>  Thu, 08 Nov 2012 17:22:13 +0100
+
+cpu-usage-reporter (0.0.2) precise; urgency=low
+
+  * Added startup after install.
+
+ -- Svenn-Arne Dragly <s@dragly.com>  Thu, 08 Nov 2012 15:49:34 +0100
+
 cpu-usage-reporter (0.0.1) precise; urgency=low
 
   * Initial release.
