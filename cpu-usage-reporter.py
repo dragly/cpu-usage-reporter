@@ -44,22 +44,35 @@ print("Using username " + username)
 
 samples = 1
 usageSum = 0
+availableMemorySum = 0
+usedMemorySum = 0
 while(True):
     cpuUsage = psutil.cpu_percent()
     usageSum += cpuUsage
+    availableMemorySum += psutil.avail_phymem() + psutil.cached_phymem()
+    usedMemorySum += psutil.used_phymem()
     if samples > 11:
-        if os.path.exists(configPath):
+        if not len(argv) > 1 and os.path.exists(configPath):
             loadUserNameFromFile()
         averageUsage = float(usageSum) / float(samples)
-        print("Pushing usage to server", averageUsage)
+        averageAvailableMemory = float(availableMemorySum) / float(samples)
+        averageUsedMemory = float(usedMemorySum) / float(samples)
+        print("Pushing usage to server", averageUsage, averageUsedMemory, averageAvailableMemory)
         try:
-            runData = json.load(urllib2.urlopen(baseUrl + "/wp-content/plugins/cpu-reporter/submit.php?user=" + username + "&usage=" + str(averageUsage)))
+            url = baseUrl + "/wp-content/plugins/cpu-reporter/submit.php?user=" + username  \
+                        + "&usage=" + str(averageUsage) \
+                        + "&available_memory=" + str(averageAvailableMemory) \
+                        + "&used_memory=" + str(averageUsedMemory)
+            response = urllib2.urlopen(url)
+            runData = json.load(response)
         except KeyboardInterrupt:
             raise KeyboardInterrupt
         except:
             print("Something bad happened. Don't care...")
         samples = 1
         usageSum = 0
-    print(cpuUsage)
+        availableMemorySum = 0
+        usedMemorySum = 0
+#    print(cpuUsage, psutil.used_phymem() / 1e6, psutil.avail_phymem() / 1e6)
     time.sleep(1)
     samples += 1
