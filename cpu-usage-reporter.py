@@ -16,7 +16,7 @@ import ConfigParser
 from sys import argv
 
 # UPDATE THESE VARIABLES
-baseUrl = "http://compphys.dragly.org"
+baseUrl = "http://comp-phys.net"
 # END UPDATE VARIABLES
 
 def loadUserNameFromFile():
@@ -74,5 +74,5 @@ while(True):
         availableMemorySum = 0
         usedMemorySum = 0
 #    print(cpuUsage, psutil.used_phymem() / 1e6, psutil.avail_phymem() / 1e6)
-    time.sleep(1)
+    time.sleep(10)
     samples += 1

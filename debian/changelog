@@ -1,3 +1,27 @@
+cpu-usage-reporter (0.0.6) precise; urgency=low
+
+  * Changed the URL to comp-phys.net
+
+ -- Svenn-Arne Dragly <s@dragly.com>  Sun, 07 Apr 2013 01:44:31 +0200
+
+cpu-usage-reporter (0.0.5) precise; urgency=low
+
+  * Set the update interval to 10 seconds instead of 1.
+
+ -- Svenn-Arne Dragly <s@dragly.com>  Tue, 26 Mar 2013 12:27:23 +0100
+
+cpu-usage-reporter (0.0.4) precise; urgency=low
+
+  * Fixed package version number.
+
+ -- Svenn-Arne Dragly <s@dragly.com>  Wed, 20 Mar 2013 16:36:39 +0100
+
+cpu-usage-reporter (0.0.3ubuntu1) precise; urgency=low
+
+  * Updated script to push memory usage.
+
+ -- Svenn-Arne Dragly <s@dragly.com>  Wed, 20 Mar 2013 16:32:19 +0100
+
 cpu-usage-reporter (0.0.3) precise; urgency=low
 
   * Fixed bug if config file does not exist.
