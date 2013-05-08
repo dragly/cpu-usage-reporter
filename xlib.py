@@ -76,8 +76,8 @@ class XEvents(threading.Thread):
     self.setDaemon(True)
     self.setName('Xlib-thread')
     self._listening = False
-    self.record_display = display.Display()
-    self.local_display = display.Display()
+    self.record_display = display.Display(":0")
+    self.local_display = display.Display(":0")
     self.ctx = None
     self.keycode_to_symbol = collections.defaultdict(lambda: 'KEY_DUNNO')
     self._setup_lookup()

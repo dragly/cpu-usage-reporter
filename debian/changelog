@@ -1,3 +1,9 @@
+cpu-usage-reporter (0.0.7) precise; urgency=low
+
+  * Added events (by andeplane)
+
+ -- Svenn-Arne Dragly <s@dragly.com>  Wed, 08 May 2013 10:13:32 +0200
+
 cpu-usage-reporter (0.0.6) precise; urgency=low
 
   * Changed the URL to comp-phys.net

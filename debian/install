@@ -1,3 +1,4 @@
 cpu-usage-reporter.py usr/bin/
+xlib.py usr/bin/
 upstart/cpu-usage-reporter.conf etc/init/
 cpu-usage-reporter.conf etc/

@@ -11,6 +11,6 @@ X-Python-Version: >= 2.6
 Package: cpu-usage-reporter
 Architecture: all
 Section: python
-Depends: python-psutil, ${misc:Depends}, ${python:Depends}
+Depends: python-psutil, python-xlib, ${misc:Depends}, ${python:Depends}
 Description: Tracks your CPU usage and shows it publicly online.
  Your CPU usage will be shown publicly online.
