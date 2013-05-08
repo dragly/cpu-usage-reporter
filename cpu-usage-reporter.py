@@ -64,8 +64,8 @@ print("Using username " + username)
 
 samples = 1
 usageSum = 0
-events = XEvents()
-events.start()
+#events = XEvents()
+#events.start()
 availableMemorySum = 0
 usedMemorySum = 0
 while(True):
@@ -74,8 +74,8 @@ while(True):
     availableMemorySum += psutil.avail_phymem() + psutil.cached_phymem()
     usedMemorySum += psutil.used_phymem()
     if samples > 11:
-        eventCount = getEventCount()
-        print "Events: "+str(eventCount)
+        #eventCount = getEventCount()
+        #print "Events: "+str(eventCount)
         if not len(argv) > 1 and os.path.exists(configPath):
             loadUserNameFromFile()
         averageUsage = float(usageSum) / float(samples)
@@ -86,12 +86,12 @@ while(True):
             url = baseUrl + "/wp-content/plugins/cpu-reporter/submit.php?user=" + username  \
                         + "&usage=" + str(averageUsage) \
                         + "&available_memory=" + str(averageAvailableMemory) \
-                        + "&used_memory=" + str(averageUsedMemory) \
-                        + "&is_active=" + str(eventCount)
+                        + "&used_memory=" + str(averageUsedMemory)
+#                        + "&is_active=" + str(eventCount)
             response = urllib2.urlopen(url)
             runData = json.load(response)
         except KeyboardInterrupt:
-            events.stop_listening()
+ #           events.stop_listening()
             raise KeyboardInterrupt
         except:
             print("Something bad happened. Don't care...")
